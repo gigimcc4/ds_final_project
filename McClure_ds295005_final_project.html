@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeanne McClure">
+
+<title>What’s time got to do with it? - Looking at teh relationship of final grades and Science Courses</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="McClure_ds295005_final_project_files/libs/clipboard/clipboard.min.js"></script>
+<script src="McClure_ds295005_final_project_files/libs/quarto-html/quarto.js"></script>
+<script src="McClure_ds295005_final_project_files/libs/quarto-html/popper.min.js"></script>
+<script src="McClure_ds295005_final_project_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="McClure_ds295005_final_project_files/libs/quarto-html/anchor.min.js"></script>
+<link href="McClure_ds295005_final_project_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="McClure_ds295005_final_project_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="McClure_ds295005_final_project_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="McClure_ds295005_final_project_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="McClure_ds295005_final_project_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="McClure_ds295005_final_project_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="McClure_ds295005_final_project_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">0 Introduction</a></li>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link" data-scroll-target="#prepare">1 Prepare</a></li>
+  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">2. Wrangle</a>
+  <ul class="collapse">
+  <li><a href="#a.-import-data" id="toc-a.-import-data" class="nav-link" data-scroll-target="#a.-import-data">a. Import Data</a></li>
+  <li><a href="#b.-tidy-data" id="toc-b.-tidy-data" class="nav-link" data-scroll-target="#b.-tidy-data">b. Tidy data</a></li>
+  </ul></li>
+  <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">3 Explore</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">4 Model</a></li>
+  <li><a href="#communicate" id="toc-communicate" class="nav-link" data-scroll-target="#communicate">5 Communicate</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">What’s time got to do with it? - Looking at teh relationship of final grades and Science Courses</h1>
+<p class="subtitle lead">DS Final Project</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeanne McClure </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">0 Introduction</h2>
+<section id="problem-statement-and-initial-analysis-plan" class="level4">
+<h4 class="anchored" data-anchor-id="problem-statement-and-initial-analysis-plan">Problem Statement and Initial Analysis Plan:</h4>
+<p>Problem Statement: Macfadyen, L. P., &amp; Dawson, S. (2010). <a href="https://www.sciencedirect.com/science/article/abs/pii/S0360131509002486?via%3Dihub">Mining LMS data to develop an “early warning system” for educators: A proof of concept.</a> Computers &amp; education, 54(2), 588-599. This article is focused on “early warning systems” in higher education, and where adoption of learning management systems (LMS) like Moodle and Canvas gained a quicker foothold, this study is particularly relevant since COVID-19. Many districts across the county have incorporated a LMS into their remote instruction and have set up virtual academies likely to continue post-pandemic. In North Carolina specifically, student disengagement has become a particular concern among districts and the NC Department of Public Instruction has recently established the <a href="https://www.dpi.nc.gov/districts-schools/operation-polaris/office-innovation/office-learning-recovery-acceleration">Office of Learning Recovery &amp; Acceleration Office of Learning Recovery &amp; AccelerationOffice of Learning Recovery &amp; Acceleration</a>.</p>
+</section>
+<section id="five-questions" class="level4">
+<h4 class="anchored" data-anchor-id="five-questions">Five Questions:</h4>
+<ol type="1">
+<li><p>What is the relationship between proportioned earned and gender?</p></li>
+<li><p>What is the relationship between time spent in hours compared to each subject?</p></li>
+<li><p>What is the relationship between time spent and science interest?</p></li>
+<li><p>What does the reasons for enrollment tell us?</p></li>
+<li><p>Does time spent predict grade earned?</p></li>
+</ol>
+</section>
+<section id="to-address-these-questions-i-would" class="level4">
+<h4 class="anchored" data-anchor-id="to-address-these-questions-i-would">To address these questions, I would:</h4>
+<p>For age, I will first determine the median age of the players and then create numerical summaries of players older and younger than that point. Use numerical summaries of age compared to: Categorical data: Team, League, Position Numerical data: Assists, number of minutes Use categorical variables (league and player name) compared to numerical values of number of goals for scoring trends.</p>
+<p>After ranking teams in terms of age trends, I will then compare this summary data to performance in the group phase of the World Cup (which will be completed prior to due date).</p>
+<p>I plan to use visualizations in a final dashboard.</p>
+</section>
+</section>
+<section id="prepare" class="level2">
+<h2 class="anchored" data-anchor-id="prepare">1 Prepare</h2>
+<p>First, to prepare the analysis we must first add the necessary libraries needed. For instance we will use a suite of libraries within the <a href="https://www.tidyverse.org/packages/"><code>Tidyverse Pacakge</code></a>. We will also load the <a href="https://here.r-lib.org/"><code>here package</code></a> to import our datasets.</p>
+<p><code>Tidyverse</code>:The tidyverse is a collection of R packages designed for data manipulation, visualization, and analysis.</p>
+<p><code>Here</code>: It provides a simple way to manage file paths in your R projects.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="wrangle" class="level2">
+<h2 class="anchored" data-anchor-id="wrangle">2. Wrangle</h2>
+<p>We will load the datasets that we will be using in this analysis. The datasets consist of log trace data, academic data and self reported survey data.</p>
+<section id="a.-import-data" class="level3">
+<h3 class="anchored" data-anchor-id="a.-import-data">a. Import Data</h3>
+<section id="data-source-1-log-data" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-1-log-data">Data Source #1: Log Data</h4>
+<p>Log-trace data is data generated from our interactions with digital technologies, such as archived data from social media postings. In education, an increasingly common source of log-trace data is that generated from interactions with LMS and other digital tools. It is a summary type of log-trace data: the number of minutes students spent on the course.</p>
+<p>Using the <code>read_csv()</code> function from {readr} and the <code>here function</code> from the {here} pacakage to import our <code>log-data.csv</code> file directly from our data folder and name this data set <code>time_spent</code>.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load with here package</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>time_spent <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"log-data.csv"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>time_spent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 716 × 6
+   student_id course_id     gender enrollment_reason             enrol…¹ time_…²
+        &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;                         &lt;chr&gt;     &lt;dbl&gt;
+ 1      60186 AnPhA-S116-01 M      Course Unavailable at Local … Approv…   2087.
+ 2      66693 AnPhA-S116-01 M      Course Unavailable at Local … Approv…   2309.
+ 3      66811 AnPhA-S116-01 F      Course Unavailable at Local … Approv…   5299.
+ 4      66862 AnPhA-S116-01 F      Course Unavailable at Local … Approv…   1747.
+ 5      67508 AnPhA-S116-01 F      Scheduling Conflict           Approv…   2668.
+ 6      70532 AnPhA-S116-01 F      Learning Preference of the S… Approv…   2938.
+ 7      77010 AnPhA-S116-01 F      Learning Preference of the S… Approv…   1533.
+ 8      85249 AnPhA-S116-01 F      Course Unavailable at Local … Approv…   1210.
+ 9      85411 AnPhA-S116-01 F      Scheduling Conflict           Approv…    473.
+10      85583 AnPhA-S116-01 F      Scheduling Conflict           Approv…   5532.
+# … with 706 more rows, and abbreviated variable names ¹​enrollment_status,
+#   ²​time_spent</code></pre>
+</div>
+</div>
+</section>
+<section id="data-source-2-academic-achievement-data" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-2-academic-achievement-data">Data Source #2: Academic Achievement Data</h4>
+<p>We’ll load the academic achievement data in the same way and and name this data set <code>gradebook</code>:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data 2: Academic Achievement</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gradebook <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"gradebook-summary.csv"</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data with glimpse</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gradebook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 717
+Columns: 4
+$ student_id            &lt;dbl&gt; 43146, 44638, 47448, 47979, 48797, 51943, 52326,…
+$ course_id             &lt;chr&gt; "FrScA-S216-02", "OcnA-S116-01", "FrScA-S216-01"…
+$ total_points_possible &lt;dbl&gt; 1217, 1676, 1232, 1833, 2225, 1222, 1775, 2225, …
+$ total_points_earned   &lt;dbl&gt; 1150.00, 1384.23, 1116.00, 1492.73, 1994.75, 70.…</code></pre>
+</div>
+</div>
+</section>
+<section id="data-source-3-self-report-survey" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-3-self-report-survey">Data Source #3: Self-Report Survey</h4>
+<p>The third data source is a self-report survey we will load it and name this data set <code>survey.</code></p>
+<p>This was data collected before the start of the course. The survey included ten items, each corresponding to one of three motivation measures: interest, utility value, and perceived competence.</p>
+<p>These were chosen for their alignment with one way to think about students’ motivation, to what extent they expect to do well (corresponding to their perceived competence) and their value for what they are learning (corresponding to their interest and utility value).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load data 3:Self-Report Survey</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"survey.csv"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect first five lines of data</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 26
+  studen…¹ cours…² subject semes…³ section   int   val percomp    tv    q1    q2
+  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 43146    FrScA-… FrScA   S216    02        4.2  3.67     4    3.86     4     4
+2 44638    OcnA-S… OcnA    S116    01        4    3        3    3.57     4     2
+3 47448    FrScA-… FrScA   S216    01        4.2  3        3    3.71     5     3
+4 47979    OcnA-S… OcnA    S216    01        4    3.67     2.5  3.86     4     3
+5 48797    PhysA-… PhysA   S116    01        3.8  3.67     3.5  3.71     4     4
+6 51943    FrScA-… FrScA   S216    03        3.8  3.67     3.5  3.71     4     4
+# … with 15 more variables: q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;, q7 &lt;dbl&gt;,
+#   q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, date.x &lt;dttm&gt;, post_int &lt;dbl&gt;,
+#   post_uv &lt;dbl&gt;, post_tv &lt;dbl&gt;, post_percomp &lt;dbl&gt;, date.y &lt;dttm&gt;,
+#   date &lt;dttm&gt;, and abbreviated variable names ¹​student_ID, ²​course_ID,
+#   ³​semester</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="b.-tidy-data" class="level3">
+<h3 class="anchored" data-anchor-id="b.-tidy-data">b. Tidy data</h3>
+<p>We want to join our data so we will need to tidy the data to get each dataset to join correctly. Each variable haas to match while we use a full join.</p>
+<section id="data-source-1-time-spent" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-1-time-spent">Data Source #1: Time Spent</h4>
+<ul>
+<li><p>First, separate course id variable into three new variables subject, section and semester.</p></li>
+<li><p>Second, divide time spent in minutes to time spent in hourse by dividing by 60.</p></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Separate course id into new variable names</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>time_spent_2 <span class="ot">&lt;-</span> time_spent <span class="sc">%&gt;%</span>  </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(course_id,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="st">"subject"</span>, <span class="st">"section"</span>, <span class="st">"semester"</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate minutes to hours on time spent and save as new variable.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>time_spent_2 <span class="ot">&lt;-</span> time_spent_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_spent_hours =</span> time_spent <span class="sc">/</span> <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="data-source-2-gradebook" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-2-gradebook">Data Source #2: Gradebook</h4>
+<p>Now, we will work on the Gradebook dataset.Like the previous dataset, we will seperate course_id variable again.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate the course_id variable</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>gradebook <span class="ot">&lt;-</span> gradebook <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(course_id, <span class="fu">c</span>(<span class="st">"subject"</span>, <span class="st">"section"</span>, <span class="st">"semester"</span>))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutate to a proportion, take total points earned divide by total points. Save as new variable proportion_earned.</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>gradebook <span class="ot">&lt;-</span> gradebook <span class="sc">%&gt;%</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion_earned =</span> (total_points_earned <span class="sc">/</span> total_points_possible <span class="sc">*</span> <span class="dv">100</span>))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>gradebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 717 × 7
+   student_id subject section semester total_points_possible total_poi…¹ propo…²
+        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;                    &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+ 1      43146 FrScA   S216    02                        1217       1150    94.5 
+ 2      44638 OcnA    S116    01                        1676       1384.   82.6 
+ 3      47448 FrScA   S216    01                        1232       1116    90.6 
+ 4      47979 OcnA    S216    01                        1833       1493.   81.4 
+ 5      48797 PhysA   S116    01                        2225       1995.   89.7 
+ 6      51943 FrScA   S216    03                        1222         70     5.73
+ 7      52326 AnPhA   S216    01                        1775       1519.   85.5 
+ 8      52446 PhysA   S116    01                        2225       2198    98.8 
+ 9      53447 FrScA   S116    01                        1212       1173    96.8 
+10      53475 FrScA   S116    02                        1212          0     0   
+# … with 707 more rows, and abbreviated variable names ¹​total_points_earned,
+#   ²​proportion_earned</code></pre>
+</div>
+</div>
+</section>
+<section id="data-source-3-survey" class="level4">
+<h4 class="anchored" data-anchor-id="data-source-3-survey">Data Source #3: Survey</h4>
+<p>Now, we will work on third data source. In this analysis we will use janitor to clean some of the variable names.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(survey)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load janitor to clean variable names that do not match</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#clean column</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(survey)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#separate course_id in survey by subject. section and semester</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(course_id, <span class="fu">c</span>(<span class="st">"subject"</span>, <span class="st">"section"</span>, <span class="st">"semester"</span>))</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#inspect data to check for consistency with other data</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>survey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 662 × 25
+   student…¹ subject section semes…²   int   val percomp    tv    q1    q2    q3
+   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 43146     FrScA   S216    02        4.2  3.67     4    3.86     4     4     4
+ 2 44638     OcnA    S116    01        4    3        3    3.57     4     2     2
+ 3 47448     FrScA   S216    01        4.2  3        3    3.71     5     3     3
+ 4 47979     OcnA    S216    01        4    3.67     2.5  3.86     4     3     2
+ 5 48797     PhysA   S116    01        3.8  3.67     3.5  3.71     4     4     3
+ 6 51943     FrScA   S216    03        3.8  3.67     3.5  3.71     4     4     3
+ 7 52326     AnPhA   S216    01        3.6  4        3    4        4     4     4
+ 8 52446     PhysA   S116    01        4.2  3.67     3    4        4     4     3
+ 9 53447     FrScA   S116    01        3.8  2        3    3        5     2     3
+10 53475     FrScA   S216    01        4.8  3.33     4    4.14     5     4     4
+# … with 652 more rows, 14 more variables: q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, date_x &lt;dttm&gt;, post_int &lt;dbl&gt;,
+#   post_uv &lt;dbl&gt;, post_tv &lt;dbl&gt;, post_percomp &lt;dbl&gt;, date_y &lt;dttm&gt;,
+#   date &lt;dttm&gt;, and abbreviated variable names ¹​student_id, ²​semester</code></pre>
+</div>
+</div>
+</section>
+<section id="c.-join-data" class="level4">
+<h4 class="anchored" data-anchor-id="c.-join-data">C. Join Data</h4>
+<p>We will use “join()” function to combine datasets and combine “gradebook” and “time_spent_2” datasets by column names. To combine the dataset by joining column names we will use “student_id”, “subject”, “semester”, and “section” for the match.</p>
+<p>We will also need to change the classification of student_id variable to character from double.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use single join to join data sets by student_id, subject, semester and section.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(gradebook, time_spent_2, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"student_id"</span>, <span class="st">"subject"</span>, <span class="st">"section"</span>, <span class="st">"semester"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#mutate to change variable class from double or numeric to character to join with survey data</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>joined_data <span class="ot">&lt;-</span> joined_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">student_id =</span> <span class="fu">as.character</span>(student_id))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>joined_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 830 × 12
+   student_id subject section semester total_po…¹ total…² propo…³ gender enrol…⁴
+   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  
+ 1 43146      FrScA   S216    02             1217   1150    94.5  F      Course…
+ 2 44638      OcnA    S116    01             1676   1384.   82.6  M      Course…
+ 3 47448      FrScA   S216    01             1232   1116    90.6  F      Other  
+ 4 47979      OcnA    S216    01             1833   1493.   81.4  M      Course…
+ 5 48797      PhysA   S116    01             2225   1995.   89.7  M      Learni…
+ 6 51943      FrScA   S216    03             1222     70     5.73 M      Learni…
+ 7 52326      AnPhA   S216    01             1775   1519.   85.5  F      Other  
+ 8 52446      PhysA   S116    01             2225   2198    98.8  F      Learni…
+ 9 53447      FrScA   S116    01             1212   1173    96.8  F      Course…
+10 53475      FrScA   S116    02             1212      0     0    F      Course…
+# … with 820 more rows, 3 more variables: enrollment_status &lt;chr&gt;,
+#   time_spent &lt;dbl&gt;, time_spent_hours &lt;dbl&gt;, and abbreviated variable names
+#   ¹​total_points_possible, ²​total_points_earned, ³​proportion_earned,
+#   ⁴​enrollment_reason</code></pre>
+</div>
+</div>
+<ul>
+<li><p>Now, use the join data to combine with the survey data and call a new object <code>data_to_explore</code>.</p></li>
+<li><p>Recode the abbreviated course names to long course names in a neew variable named <code>subject</code>.</p></li>
+<li><p>Finally, write the data to the data folder for future use.</p></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#full join survey dta with joined dataframe</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data_to_explore <span class="ot">&lt;-</span> <span class="fu">full_join</span>(joined_data, survey, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"student_id"</span>, <span class="st">"subject"</span>, <span class="st">"section"</span>, <span class="st">"semester"</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># recode abbreviated code names to long name</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>data_to_explore <span class="ot">&lt;-</span> data_to_explore <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">subject =</span> <span class="fu">recode</span>(subject, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"AnPhA"</span> <span class="ot">=</span> <span class="st">"Anatomy"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"BioA"</span> <span class="ot">=</span> <span class="st">"Biology"</span>, </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"FrScA"</span> <span class="ot">=</span> <span class="st">"Forensics"</span>, </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"OcnA"</span> <span class="ot">=</span>  <span class="st">"Oceanography"</span>, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"PhysA"</span> <span class="ot">=</span> <span class="st">"Physics"</span>))</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>data_to_explore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 943 × 33
+   student_id subject     section semes…¹ total…² total…³ propo…⁴ gender enrol…⁵
+   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  
+ 1 43146      Forensics   S216    02         1217   1150    94.5  F      Course…
+ 2 44638      Oceanograp… S116    01         1676   1384.   82.6  M      Course…
+ 3 47448      Forensics   S216    01         1232   1116    90.6  F      Other  
+ 4 47979      Oceanograp… S216    01         1833   1493.   81.4  M      Course…
+ 5 48797      Physics     S116    01         2225   1995.   89.7  M      Learni…
+ 6 51943      Forensics   S216    03         1222     70     5.73 M      Learni…
+ 7 52326      Anatomy     S216    01         1775   1519.   85.5  F      Other  
+ 8 52446      Physics     S116    01         2225   2198    98.8  F      Learni…
+ 9 53447      Forensics   S116    01         1212   1173    96.8  F      Course…
+10 53475      Forensics   S116    02         1212      0     0    F      Course…
+# … with 933 more rows, 24 more variables: enrollment_status &lt;chr&gt;,
+#   time_spent &lt;dbl&gt;, time_spent_hours &lt;dbl&gt;, int &lt;dbl&gt;, val &lt;dbl&gt;,
+#   percomp &lt;dbl&gt;, tv &lt;dbl&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;,
+#   q6 &lt;dbl&gt;, q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, date_x &lt;dttm&gt;,
+#   post_int &lt;dbl&gt;, post_uv &lt;dbl&gt;, post_tv &lt;dbl&gt;, post_percomp &lt;dbl&gt;,
+#   date_y &lt;dttm&gt;, date &lt;dttm&gt;, and abbreviated variable names ¹​semester,
+#   ²​total_points_possible, ³​total_points_earned, ⁴​proportion_earned, …</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write data to file to use later</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(data_to_explore, <span class="st">"data/data_to_explore.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+</section>
+<section id="explore" class="level2">
+<h2 class="anchored" data-anchor-id="explore">3 Explore</h2>
+<section id="what-is-the-relationship-between-proportioned-earned-and-gender" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-the-relationship-between-proportioned-earned-and-gender">What is the relationship between proportioned earned and gender?</h4>
+<p>First, we will look at the mean score by gender</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>grp_sum1 <span class="ot">&lt;-</span> data_to_explore <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(subject, gender) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_at</span>(<span class="fu">vars</span>(proportion_earned), <span class="fu">list</span>(<span class="at">mean =</span> mean), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>grp_sum1<span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"Subject mean final grade by gender"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>Subject mean final grade by gender</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> mean </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Anatomy </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 77.51946 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Anatomy </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 69.34650 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Anatomy </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 71.59421 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 70.41478 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 55.03053 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 77.41588 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Forensics </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 79.91285 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Forensics </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 72.35408 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Forensics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 75.62083 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oceanography </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 71.27176 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oceanography </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 75.06598 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oceanography </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 81.30378 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Physics </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 83.03477 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Physics </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 85.99089 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Physics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 97.46816 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Second, we will visualize it with box plot. We see there is a lot of outliers. We will need to investigate this further.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_to_explore <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(subject, proportion_earned, gender)<span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> proportion_earned, </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">y =</span> gender, </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">color =</span> gender), <span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>subject,<span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>  (<span class="at">y =</span> <span class="st">"Course Subject"</span>, </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Final Online Course Grade"</span>) <span class="sc">+</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(),</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>()) <span class="sc">+</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>,</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="McClure_ds295005_final_project_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="what-is-the-relationship-between-timespent-in-hours-compared-to-each-subject" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-the-relationship-between-timespent-in-hours-compared-to-each-subject">What is the relationship between timespent in hours compared to each subject?</h4>
+<p>First, we will find the mean time that was spend on each subject by gender. We eill expand this by also finding the min and max time students spent on each course.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>grp_sum2 <span class="ot">&lt;-</span> data_to_explore <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(time_spent_hours))<span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender, subject) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_time =</span> <span class="fu">mean</span>(time_spent_hours),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_time =</span> <span class="fu">min</span>(time_spent_hours),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_time =</span> <span class="fu">max</span>(time_spent_hours)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_time))</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>grp_sum2<span class="sc">%&gt;%</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"Time Spent in hours by gender"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>Time Spent in hours by gender</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:right;"> mean_time </th>
+   <th style="text-align:right;"> min_time </th>
+   <th style="text-align:right;"> max_time </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Anatomy </td>
+   <td style="text-align:right;"> 41.01382 </td>
+   <td style="text-align:right;"> 0.0075000 </td>
+   <td style="text-align:right;"> 118.07834 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:left;"> Oceanography </td>
+   <td style="text-align:right;"> 35.67547 </td>
+   <td style="text-align:right;"> 0.7455533 </td>
+   <td style="text-align:right;"> 147.84805 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:left;"> Anatomy </td>
+   <td style="text-align:right;"> 33.58572 </td>
+   <td style="text-align:right;"> 3.5197217 </td>
+   <td style="text-align:right;"> 117.59444 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Oceanography </td>
+   <td style="text-align:right;"> 33.07527 </td>
+   <td style="text-align:right;"> 0.0097217 </td>
+   <td style="text-align:right;"> 112.86612 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Forensics </td>
+   <td style="text-align:right;"> 28.16382 </td>
+   <td style="text-align:right;"> 0.0652783 </td>
+   <td style="text-align:right;"> 98.45501 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:right;"> 26.47241 </td>
+   <td style="text-align:right;"> 0.0202800 </td>
+   <td style="text-align:right;"> 111.07416 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Physics </td>
+   <td style="text-align:right;"> 25.90665 </td>
+   <td style="text-align:right;"> 0.0116667 </td>
+   <td style="text-align:right;"> 89.55584 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:left;"> Physics </td>
+   <td style="text-align:right;"> 22.51651 </td>
+   <td style="text-align:right;"> 1.8752783 </td>
+   <td style="text-align:right;"> 54.25500 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:left;"> Forensics </td>
+   <td style="text-align:right;"> 22.09886 </td>
+   <td style="text-align:right;"> 0.0402783 </td>
+   <td style="text-align:right;"> 108.95029 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:right;"> 20.05483 </td>
+   <td style="text-align:right;"> 0.1691633 </td>
+   <td style="text-align:right;"> 95.78501 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Second, we will visualize the results with a frequency polygon.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data_to_explore<span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, <span class="at">color =</span> subject), <span class="at">binwidth =</span> <span class="dv">25</span>, <span class="at">boundary =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"How long do most of students spend on each subject?"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_grey</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="McClure_ds295005_final_project_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="what-is-the-relationship-between-time-spent-and-science-interest" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-the-relationship-between-time-spent-and-science-interest">What is the relationship between time spent and science interest?</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>grp_sum3 <span class="ot">&lt;-</span> data_to_explore <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(time_spent_hours)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(int))<span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(subject, gender) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">mean_interest =</span> <span class="fu">mean</span>(int),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">min_interest =</span> <span class="fu">min</span>(int),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">max_interest =</span> <span class="fu">max</span>(int)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>grp_sum3<span class="sc">%&gt;%</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"Time spent in hours by mean science interest"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>Time spent in hours by mean science interest</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:right;"> mean_interest </th>
+   <th style="text-align:right;"> min_interest </th>
+   <th style="text-align:right;"> max_interest </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Anatomy </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 4.425743 </td>
+   <td style="text-align:right;"> 1.8 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Anatomy </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 4.376000 </td>
+   <td style="text-align:right;"> 3.2 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 3.850000 </td>
+   <td style="text-align:right;"> 2.4 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 3.600000 </td>
+   <td style="text-align:right;"> 2.4 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Forensics </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 4.455901 </td>
+   <td style="text-align:right;"> 2.6 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Forensics </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 4.239286 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oceanography </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 4.194030 </td>
+   <td style="text-align:right;"> 2.2 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oceanography </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 4.206250 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Physics </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 3.991667 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Physics </td>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 3.960000 </td>
+   <td style="text-align:right;"> 2.2 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>grp_sum3 <span class="ot">&lt;-</span> data_to_explore  <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> int, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y =</span> time_spent_hours,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">color =</span> subject),</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> int, </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y =</span> time_spent_hours,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">weight =</span> .<span class="dv">5</span>),</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"gray"</span>, </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> loess,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">100</span>) <span class="sc">+</span> </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>subject) <span class="sc">+</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Is there a clear realationship between interest and time spent?"</span>,</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Time Spent"</span>,</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Interest"</span>,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>       ) <span class="sc">+</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>,</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"Subject"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="what-does-the-reasons-for-enrollment-tell-us" class="level4">
+<h4 class="anchored" data-anchor-id="what-does-the-reasons-for-enrollment-tell-us">What does the reasons for enrollment tell us?</h4>
+<p>We will also look at a heatmap to see if we can understand what is being said about enrollment reason. Why students enrolled for science courses.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data_to_explore <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(subject, enrollment_reason) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> subject, </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> enrollment_reason, </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> n)) <span class="sc">+</span> </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Reasons for Enrollment by Subject"</span>, </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Which subjects were the least available at local schools?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="McClure_ds295005_final_project_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="model" class="level2">
+<h2 class="anchored" data-anchor-id="model">4 Model</h2>
+<section id="does-time-spent-predict-grade-earned" class="level4">
+<h4 class="anchored" data-anchor-id="does-time-spent-predict-grade-earned">Does time spent predict grade earned?</h4>
+<p>The following code estimates a model in which <code>proportion_earned</code>, the proportion of points students earned, is the dependent variable. It is predicted by one independent variable, <code>time_pent_hours</code>, students’ time spent on the course LMS.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(proportion_earned <span class="sc">~</span> time_spent_hours, </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> data_to_explore)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = proportion_earned ~ time_spent_hours, data = data_to_explore)
+
+Coefficients:
+     (Intercept)  time_spent_hours  
+         62.4306            0.4792  </code></pre>
+</div>
+</div>
+<p>Note that that estimate for time spent is .005, so for every one-unit increase in <code>time_spent_hours</code>, we should expect a 5 percentage point increase in their grade.</p>
+<p>Finally, we will plot lot the linear model giving the line of best fit.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_viz1 <span class="ot">&lt;-</span> data_to_explore <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(enrollment_status) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_spent_hours, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> proportion_earned, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> enrollment_status)) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"gray"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">100</span>) <span class="sc">+</span> </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">150</span>) <span class="sc">+</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">"enrollment_status"</span>)<span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color=</span><span class="fu">guide_legend</span>(<span class="st">"Enrollment Status:"</span>))<span class="sc">+</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"How Time Spent on Course LMS is Related to Points Earned in the Course"</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"For every one-unit increase in time spent in hours, </span><span class="sc">\n</span><span class="st"> we should expect a 5 percentage point increase in final grade."</span>,</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Time Spent (Hours)"</span>,</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion of Points Earned"</span>)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>data_viz1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="McClure_ds295005_final_project_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="communicate" class="level2">
+<h2 class="anchored" data-anchor-id="communicate">5 Communicate</h2>
+<p>To communicate our data I created a static dashboard.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

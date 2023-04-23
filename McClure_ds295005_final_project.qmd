@@ -1,0 +1,384 @@
+---
+title: "What's time got to do with it? - Looking at teh relationship of final grades and Science Courses"
+subtitle: "DS Final Project"
+author: "Jeanne McClure"
+execute:
+  echo: true
+  message: false
+  warning: false
+format: 
+  html:
+    toc: true
+    toc-location: left
+    number-sections: false
+    theme: 
+      - united
+      - "css/quarto-laser-html.scss"
+    code-fold: true
+editor: visual
+---
+
+## 0 Introduction
+
+#### Problem Statement and Initial Analysis Plan:
+
+Problem Statement: Macfadyen, L. P., & Dawson, S. (2010). [Mining LMS data to develop an "early warning system" for educators: A proof of concept.](https://www.sciencedirect.com/science/article/abs/pii/S0360131509002486?via%3Dihub) Computers & education, 54(2), 588-599. This article is focused on "early warning systems" in higher education, and where adoption of learning management systems (LMS) like Moodle and Canvas gained a quicker foothold, this study is particularly relevant since COVID-19. Many districts across the county have incorporated a LMS into their remote instruction and have set up virtual academies likely to continue post-pandemic. In North Carolina specifically, student disengagement has become a particular concern among districts and the NC Department of Public Instruction has recently established the [Office of Learning Recovery & Acceleration Office of Learning Recovery & AccelerationOffice of Learning Recovery & Acceleration](https://www.dpi.nc.gov/districts-schools/operation-polaris/office-innovation/office-learning-recovery-acceleration).
+
+#### Five Questions:
+
+1.  What is the relationship between proportioned earned and gender?
+
+2.  What is the relationship between time spent in hours compared to each subject?
+
+3.  What is the relationship between time spent and science interest?
+
+4.  What does the reasons for enrollment tell us?
+
+5.  Does time spent predict grade earned?
+
+#### To address these questions, I would:
+
+For age, I will first determine the median age of the players and then create numerical summaries of players older and younger than that point. Use numerical summaries of age compared to: Categorical data: Team, League, Position Numerical data: Assists, number of minutes Use categorical variables (league and player name) compared to numerical values of number of goals for scoring trends.
+
+After ranking teams in terms of age trends, I will then compare this summary data to performance in the group phase of the World Cup (which will be completed prior to due date).
+
+I plan to use visualizations in a final dashboard.
+
+## 1 Prepare
+
+First, to prepare the analysis we must first add the necessary libraries needed. For instance we will use a suite of libraries within the [`Tidyverse Pacakge`](https://www.tidyverse.org/packages/). We will also load the [`here package`](https://here.r-lib.org/) to import our datasets.
+
+`Tidyverse`:The tidyverse is a collection of R packages designed for data manipulation, visualization, and analysis.
+
+`Here`: It provides a simple way to manage file paths in your R projects.
+
+```{r}
+# load packages
+library(tidyverse)
+library(here)
+library(kableExtra)
+```
+
+## 2. Wrangle
+
+We will load the datasets that we will be using in this analysis. The datasets consist of log trace data, academic data and self reported survey data.
+
+### a. Import Data
+
+#### Data Source #1: Log Data
+
+Log-trace data is data generated from our interactions with digital technologies, such as archived data from social media postings. In education, an increasingly common source of log-trace data is that generated from interactions with LMS and other digital tools. It is a summary type of log-trace data: the number of minutes students spent on the course.
+
+Using the `read_csv()` function from {readr} and the `here function` from the {here} pacakage to import our `log-data.csv` file directly from our data folder and name this data set `time_spent`.
+
+```{r}
+#load with here package
+time_spent <- read_csv(here("data", "log-data.csv"))
+
+#inspect data
+time_spent
+```
+
+#### Data Source #2: Academic Achievement Data
+
+We'll load the academic achievement data in the same way and and name this data set `gradebook`:
+
+```{r}
+#load data 2: Academic Achievement
+gradebook <- read_csv(here("data", "gradebook-summary.csv"))
+
+#inspect data with glimpse
+glimpse(gradebook)
+```
+
+#### Data Source #3: Self-Report Survey
+
+The third data source is a self-report survey we will load it and name this data set `survey.`
+
+This was data collected before the start of the course. The survey included ten items, each corresponding to one of three motivation measures: interest, utility value, and perceived competence.
+
+These were chosen for their alignment with one way to think about students' motivation, to what extent they expect to do well (corresponding to their perceived competence) and their value for what they are learning (corresponding to their interest and utility value).
+
+```{r}
+#load data 3:Self-Report Survey
+survey <- read_csv(here("data", "survey.csv"))
+
+#inspect first five lines of data
+head(survey)
+```
+
+### b. Tidy data
+
+We want to join our data so we will need to tidy the data to get each dataset to join correctly. Each variable haas to match while we use a full join.
+
+#### Data Source #1: Time Spent
+
+-   First, separate course id variable into three new variables subject, section and semester.
+
+-   Second, divide time spent in minutes to time spent in hourse by dividing by 60.
+
+```{r}
+#Separate course id into new variable names
+time_spent_2 <- time_spent %>%  
+  separate(course_id,
+           c("subject", "section", "semester"))
+# mutate minutes to hours on time spent and save as new variable.
+time_spent_2 <- time_spent_2 %>% 
+  mutate(time_spent_hours = time_spent / 60)
+
+```
+
+#### Data Source #2: Gradebook
+
+Now, we will work on the Gradebook dataset.Like the previous dataset, we will seperate course_id variable again.
+
+```{r}
+# separate the course_id variable
+gradebook <- gradebook %>% 
+  separate(course_id, c("subject", "section", "semester"))
+
+# Mutate to a proportion, take total points earned divide by total points. Save as new variable proportion_earned.
+gradebook <- gradebook %>% 
+  mutate(proportion_earned = (total_points_earned / total_points_possible * 100))
+
+gradebook
+```
+
+#### Data Source #3: Survey
+
+Now, we will work on third data source. In this analysis we will use janitor to clean some of the variable names.
+
+```{r}
+View(survey)
+
+# load janitor to clean variable names that do not match
+library(janitor)
+
+#clean column
+survey <- clean_names(survey)
+
+#separate course_id in survey by subject. section and semester
+survey <- survey %>% 
+  separate(course_id, c("subject", "section", "semester"))
+
+#inspect data to check for consistency with other data
+survey
+
+```
+
+#### C. Join Data
+
+We will use "join()" function to combine datasets and combine "gradebook" and "time_spent_2" datasets by column names. To combine the dataset by joining column names we will use "student_id", "subject", "semester", and "section" for the match.
+
+We will also need to change the classification of student_id variable to character from double.
+
+```{r}
+# use single join to join data sets by student_id, subject, semester and section.
+joined_data <- full_join(gradebook, time_spent_2, 
+                         by = c("student_id", "subject", "section", "semester"))
+
+#mutate to change variable class from double or numeric to character to join with survey data
+joined_data <- joined_data %>%
+  mutate(student_id = as.character(student_id))
+
+joined_data
+```
+
+-   Now, use the join data to combine with the survey data and call a new object `data_to_explore`.
+
+-   Recode the abbreviated course names to long course names in a neew variable named `subject`.
+
+-   Finally, write the data to the data folder for future use.
+
+```{r}
+#full join survey dta with joined dataframe
+data_to_explore <- full_join(joined_data, survey, by = c("student_id", "subject", "section", "semester"))
+
+# recode abbreviated code names to long name
+data_to_explore <- data_to_explore |>
+  mutate(subject = recode(subject, 
+                          "AnPhA" = "Anatomy",
+                          "BioA" = "Biology", 
+                          "FrScA" = "Forensics", 
+                          "OcnA" =  "Oceanography", 
+                          "PhysA" = "Physics"))
+
+# inspect data
+data_to_explore
+
+# write data to file to use later
+write_csv(data_to_explore, "data/data_to_explore.csv")
+```
+
+## 3 Explore
+
+#### What is the relationship between proportioned earned and gender?
+
+First, we will look at the mean score by gender
+
+```{r}
+grp_sum1 <- data_to_explore %>%
+  group_by(subject, gender) %>%
+  summarise_at(vars(proportion_earned), list(mean = mean), na.rm = TRUE)
+
+grp_sum1%>%
+  kbl(caption = "Subject mean final grade by gender") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+Second, we will visualize it with box plot. We see there is a lot of outliers. We will need to investigate this further.
+
+```{r}
+data_to_explore %>%
+select(subject, proportion_earned, gender)%>%
+ggplot() +
+geom_boxplot(mapping = aes(x = proportion_earned, 
+                           y = gender, 
+                           color = gender), alpha = .25) + 
+facet_wrap(~subject,ncol = 1) + 
+labs  (y = "Course Subject", 
+  x = "Final Online Course Grade") + 
+ theme_void() +
+  theme(legend.position = "bottom",
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.title.x = element_text(),
+        axis.text.x = element_text()) +
+  scale_color_brewer(palette = "Set1",
+                     name = "Gender") +
+  scale_x_continuous(breaks = seq(0, 100, by = 5))
+```
+
+#### What is the relationship between timespent in hours compared to each subject?
+
+First, we will find the mean time that was spend on each subject by gender. We eill expand this by also finding the min and max time students spent on each course.
+
+```{r}
+grp_sum2 <- data_to_explore %>%
+  filter(!is.na(time_spent_hours))%>%
+  group_by(gender, subject) %>%
+  summarize(mean_time = mean(time_spent_hours),
+            min_time = min(time_spent_hours),
+            max_time = max(time_spent_hours)) %>%
+  arrange(desc(mean_time))
+
+grp_sum2%>%
+  kbl(caption = "Time Spent in hours by gender") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+Second, we will visualize the results with a frequency polygon.
+
+```{r}
+data_to_explore%>%
+  ggplot() +
+  geom_freqpoly(mapping = aes(x = time_spent_hours, color = subject), binwidth = 25, boundary = 0) +
+  labs(title = "How long do most of students spend on each subject?") +
+  theme_grey()
+```
+
+#### What is the relationship between time spent and science interest?
+
+```{r}
+grp_sum3 <- data_to_explore %>%
+  filter(!is.na(time_spent_hours)) %>%
+  filter(!is.na(int))%>%
+  group_by(subject, gender) %>%
+    summarize(
+      mean_interest = mean(int),
+      min_interest = min(int),
+      max_interest = max(int)
+    )
+
+grp_sum3%>%
+  kbl(caption = "Time spent in hours by mean science interest") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+```{r}
+grp_sum3 <- data_to_explore  %>% 
+  ggplot() +
+  geom_point(mapping = aes(x = int, 
+                       y = time_spent_hours,
+                       color = subject),
+             alpha = .5) +
+  geom_smooth(mapping = aes(x = int, 
+                            y = time_spent_hours,
+                            weight = .5),
+              color = "gray", 
+              method = loess,
+              se = FALSE) +
+  ylim(0, 100) + 
+  xlim(1, 5) +
+  facet_wrap(~subject) +
+  labs(title = "Is there a clear realationship between interest and time spent?",
+       y = "Time Spent",
+       x = "Interest",
+       ) +
+  theme_bw() +
+  theme(legend.position = "none",
+        panel.grid.minor = element_blank()) +
+  scale_color_brewer(palette = "Set1",
+                     name = "Subject")
+```
+
+#### What does the reasons for enrollment tell us?
+
+We will also look at a heatmap to see if we can understand what is being said about enrollment reason. Why students enrolled for science courses.
+
+```{r}
+data_to_explore %>% 
+  count(subject, enrollment_reason) %>% 
+  ggplot() + 
+  geom_tile(mapping = aes(x = subject, 
+                          y = enrollment_reason, 
+                          fill = n)) + 
+  labs(title = "Reasons for Enrollment by Subject", 
+       caption = "Which subjects were the least available at local schools?")
+```
+
+## 4 Model
+
+#### Does time spent predict grade earned?
+
+The following code estimates a model in which `proportion_earned`, the proportion of points students earned, is the dependent variable. It is predicted by one independent variable, `time_pent_hours`, students' time spent on the course LMS.
+
+```{r}
+lm(proportion_earned ~ time_spent_hours, 
+   data = data_to_explore)
+```
+
+Note that that estimate for time spent is .005, so for every one-unit increase in `time_spent_hours`, we should expect a 5 percentage point increase in their grade.
+
+Finally, we will plot lot the linear model giving the line of best fit.
+
+```{r}
+
+
+data_viz1 <- data_to_explore %>%
+  drop_na(enrollment_status) %>%
+  ggplot(aes(x = time_spent_hours, 
+             y = proportion_earned, 
+             color = enrollment_status)) +
+  geom_point() +
+  geom_smooth(method = "lm", 
+              color = "gray",
+              se = FALSE)+
+  ylim(0, 100) + 
+  xlim(0, 150) +
+    scale_color_brewer(palette = "Set1",
+                     name = "enrollment_status")+
+  guides(color=guide_legend("Enrollment Status:"))+
+  labs(title="How Time Spent on Course LMS is Related to Points Earned in the Course",
+       caption = "For every one-unit increase in time spent in hours, \n we should expect a 5 percentage point increase in final grade.",
+       x="Time Spent (Hours)",
+       y = "Proportion of Points Earned")
+  
+data_viz1
+
+
+```
+
+## 5 Communicate
+
+To communicate our data I created a static dashboard.
