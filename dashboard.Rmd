@@ -28,6 +28,11 @@ data_to_explore <- read_csv(here("data", "data_to_explore.csv"))
 
 ## Inputs {.sidebar}
 
+While looking at the relationship between final grade and gender in each online science course we see that females do better in Anatomy, Biology, and Forensics. However, males do better in Oceanography and Physics.
+
+We also noticed that the course where students spend the most time on is Anatomy at about 35 hours. In contrary to Forensics where students average time spent on the course is about 12.5 hours.
+
+However our model predicts the more time someone spends on a course the higher their grade. Our model shows that for each 1 unit increase in time spent there will be a 5 percentage point increase in final grade.
 
 
 Column {data-width=650 .tabset}

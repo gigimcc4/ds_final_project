@@ -382,3 +382,7 @@ data_viz1
 ## 5. Communicate
 
 To communicate our data I created a static dashboard that you can find [here](https://gigimcc4.github.io/ds_final_project/dashboard.html)
+
+
+References:
+Macfadyen, L. P., & Dawson, S. (2010). Mining LMS data to develop an “early warning system” for educators: A proof of concept. Computers & education, 54(2), 588-599.
