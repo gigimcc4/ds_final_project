@@ -1,0 +1,122 @@
+---
+title: "What's time got to do with it? - An exploration of timespent and final grades in online science courses"
+output: 
+  flexdashboard::flex_dashboard:
+    theme:
+      bg: "#727d89"
+      fg: "#FDF7F7" 
+      primary: "#Faf1b3"
+      base_font:
+        google: Prompt
+      code_font:
+        google: JetBrains Mono
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+# Install thematic and un-comment for themed static plots (i.e., ggplot2)
+# thematic::thematic_rmd()
+library(flexdashboard)
+library(tidyverse)
+library(here)
+
+
+data_to_explore <- read_csv(here("data", "data_to_explore.csv"))
+```
+
+## Inputs {.sidebar}
+
+
+Column {data-width=650 .tabset}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+data_to_explore %>%
+  drop_na(enrollment_status) %>%
+  ggplot(aes(x = time_spent_hours, 
+             y = proportion_earned, 
+             color = enrollment_status)) +
+  geom_point() +
+  geom_smooth(method = "lm", 
+              color = "gray",
+              se = FALSE)+
+  ylim(0, 100) + 
+  xlim(0, 150) +
+    scale_color_brewer(palette = "Set1",
+                     name = "enrollment_status")+
+  guides(color=guide_legend("Enrollment Status:"))+
+  labs(title="How Time Spent on Course LMS is \n Related to Points Earned in the Course",
+       caption = "For every one-unit increase in time spent in hours, \n we should expect a 5 percentage point increase in final grade.",
+       x="Time Spent (Hours)",
+       y = "Proportion of Points Earned")
+```
+
+### Chart B
+
+```{r}
+data_to_explore  %>% 
+  ggplot() +
+  geom_point(mapping = aes(x = int, 
+                       y = time_spent_hours,
+                       color = subject),
+             alpha = .5) +
+  geom_smooth(mapping = aes(x = int, 
+                            y = time_spent_hours,
+                            weight = .5),
+              color = "gray", 
+              method = loess,
+              se = FALSE) +
+  ylim(0, 100) + 
+  xlim(1, 5) +
+  facet_wrap(~subject) +
+  labs(title = "Is there a clear realationship between interest and time spent?",
+       y = "Time Spent",
+       x = "Interest",
+       ) +
+  theme_bw() +
+  theme(legend.position = "none",
+        panel.grid.minor = element_blank()) +
+  scale_color_brewer(palette = "Set1",
+                     name = "Subject")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart C
+
+```{r}
+data_to_explore%>%
+  ggplot() +
+  geom_freqpoly(mapping = aes(x = time_spent_hours, color = subject), binwidth = 25, boundary = 0) +
+  labs(title = "How long do most of students spend on each subject?") +
+  theme_grey()
+```
+
+### Chart D
+
+```{r}
+data_to_explore %>%
+select(subject, proportion_earned, gender)%>%
+ggplot() +
+geom_boxplot(mapping = aes(x = proportion_earned, 
+                           y = gender, 
+                           color = gender), alpha = .25) + 
+facet_wrap(~subject,ncol = 1) + 
+labs  (y = "Course Subject", 
+  x = "Final Online Course Grade") + 
+ theme_void() +
+  theme(legend.position = "bottom",
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.title.x = element_text(),
+        axis.text.x = element_text()) +
+  scale_color_brewer(palette = "Set1",
+                     name = "Gender") +
+  scale_x_continuous(breaks = seq(0, 100, by = 5))
+```
+
