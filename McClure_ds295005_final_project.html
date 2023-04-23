@@ -121,7 +121,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">3 Explore</a></li>
   <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">4 Model</a></li>
-  <li><a href="#communicate" id="toc-communicate" class="nav-link" data-scroll-target="#communicate">5 Communicate</a></li>
+  <li><a href="#communicate" id="toc-communicate" class="nav-link" data-scroll-target="#communicate">5. Communicate</a></li>
   </ul>
 </nav>
 </div>
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="five-questions" class="level4">
 <h4 class="anchored" data-anchor-id="five-questions">Five Questions:</h4>
 <ol type="1">
-<li><p>What is the relationship between proportioned earned and gender?</p></li>
+<li><p>What is the relationship between final grade and gender?</p></li>
 <li><p>What is the relationship between time spent in hours compared to each subject?</p></li>
 <li><p>What is the relationship between time spent and science interest?</p></li>
 <li><p>What does the reasons for enrollment tell us?</p></li>
@@ -171,9 +171,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="to-address-these-questions-i-would" class="level4">
 <h4 class="anchored" data-anchor-id="to-address-these-questions-i-would">To address these questions, I would:</h4>
-<p>For age, I will first determine the median age of the players and then create numerical summaries of players older and younger than that point. Use numerical summaries of age compared to: Categorical data: Team, League, Position Numerical data: Assists, number of minutes Use categorical variables (league and player name) compared to numerical values of number of goals for scoring trends.</p>
-<p>After ranking teams in terms of age trends, I will then compare this summary data to performance in the group phase of the World Cup (which will be completed prior to due date).</p>
-<p>I plan to use visualizations in a final dashboard.</p>
+<p>In order to look at the average final grade in each subject by gender I would first group the variables subject and gender, taking the mean of proportion earned. I wrangled the proportion earned from points to grade by percentage points. I would make sure to omit NAs in time spent by filtering out NAs. Then to look at time spent in each course I would group by gender and subject taking the mean, max and min values of time spent in hours. However, I left those that identified as NA to show the relationship there.</p>
+<p>To look at the relationship of time spent and science interest from the self reported survey I would first remove NAs from time spent and from science interest. Then I would find the mean, min and max of science interest from grouping gender and subject.</p>
+<p>To look at the enrollment reasons I will create a heat map where reason will be on the X and subject will be on the Y. FInally we will do a linear regression to see if time spent in hours can predict final grade earned. We will use the lm function, the proportion of points students earned, is the dependent variable. It is predicted by one independent variable, time_pent_hours. We will then use ggplot to graph the model. Finally, to communicate the results I will create a static dashboard using flexdashboard.</p>
 </section>
 </section>
 <section id="prepare" class="level2">
@@ -609,8 +609,8 @@ $ total_points_earned   &lt;dbl&gt; 1150.00, 1384.23, 1116.00, 1492.73, 1994.75,
 </div>
 </div>
 </section>
-<section id="what-is-the-relationship-between-timespent-in-hours-compared-to-each-subject" class="level4">
-<h4 class="anchored" data-anchor-id="what-is-the-relationship-between-timespent-in-hours-compared-to-each-subject">What is the relationship between timespent in hours compared to each subject?</h4>
+<section id="what-is-the-relationship-between-time-spent-in-hours-compared-to-each-subject" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-the-relationship-between-time-spent-in-hours-compared-to-each-subject">What is the relationship between time spent in hours compared to each subject?</h4>
 <p>First, we will find the mean time that was spend on each subject by gender. We eill expand this by also finding the min and max time students spent on each course.</p>
 <div class="cell">
 <details>
@@ -944,8 +944,8 @@ Coefficients:
 </section>
 </section>
 <section id="communicate" class="level2">
-<h2 class="anchored" data-anchor-id="communicate">5 Communicate</h2>
-<p>To communicate our data I created a static dashboard.</p>
+<h2 class="anchored" data-anchor-id="communicate">5. Communicate</h2>
+<p>To communicate our data I created a static dashboard that you can find <a href="https://gigimcc4.github.io/ds_final_project/dashboard.html">here</a></p>
 </section>
 
 </main>
